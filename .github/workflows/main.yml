@@ -23,8 +23,8 @@ jobs:
       - name: Run Newman
         run: npx newman run collection/moduit.json -e environment/environment.json --reporters htmlextra --reporter-htmlextra-export newman-report.html
 
-      - name: Copy Newman Report
-        run: mv newman-report.html $GITHUB_WORKSPACE/reports/
+      - name: Move Newman Report
+        run: mv newman-report.html $GITHUB_WORKSPACE/reports/newman-report.html
 
       - name: Publish Newman Report
         uses: peaceiris/actions-gh-pages@v3
