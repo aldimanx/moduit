@@ -46,7 +46,7 @@
           "path": ["api", "users"],
           "query": [
             {
-              "key": "name",
+              "key": "name",  
               "value": "aldy"
             },
             {
