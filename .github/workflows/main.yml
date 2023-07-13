@@ -21,13 +21,13 @@ jobs:
         run: npm install
 
       - name: Run Newman
-        run: npx newman run collection/moduit.json -e environment/environment.json -r htmlextra --reporter-htmlextra-export ./report/result.html
+        run: npx newman run collection/moduit.json -e environment/environment.json --reporters htmlextra --reporter-htmlextra-export newman-report.html
 
       - name: Copy Newman Report
-        run: result.html $GITHUB_WORKSPACE/report/
+        run: mv newman-report.html $GITHUB_WORKSPACE/reports/
 
       - name: Publish Newman Report
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: $GITHUB_WORKSPACE/report
+          publish_dir: $GITHUB_WORKSPACE/reports
