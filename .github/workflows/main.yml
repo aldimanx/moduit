@@ -16,9 +16,6 @@ on:
         required: false
         type: boolean
     
-  push:
-    branches:
-      - master  # Change this to the branch you want to trigger the workflow on
 
 jobs:
   log-the-inputs:
@@ -32,10 +29,7 @@ jobs:
           LEVEL: ${{ inputs.logLevel }}
           TAGS: ${{ inputs.tags }}
 
-  newman:
-    runs-on: ubuntu-latest  # Change this to your desired runner environment
 
-    steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
