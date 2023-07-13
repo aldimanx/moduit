@@ -19,12 +19,23 @@ on:
         description: 'Environment to run tests against'
         type: environment
         required: true
-
   push:
     branches:
       - master  # Change this to the branch you want to trigger the workflow on
 
 jobs:
+  log-the-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Log level: $LEVEL"
+          echo "Tags: $TAGS"
+          echo "Environment: $ENVIRONMENT"
+        env:
+          LEVEL: ${{ inputs.logLevel }}
+          TAGS: ${{ inputs.tags }}
+          ENVIRONMENT: ${{ inputs.environment }}
+          
   newman:
     runs-on: ubuntu-latest  # Change this to your desired runner environment
 
@@ -50,7 +61,7 @@ jobs:
         run: mv newman-report.html $GITHUB_WORKSPACE/reports/newman-report.html
 
       - name: Publish Newman Report
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: $GITHUB_WORKSPACE/reports
+          branch: gh-pages
+          folder: .
