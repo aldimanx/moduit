@@ -1,0 +1,24 @@
+name: Run Newman
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger the workflow on
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest  # Change this to your desired runner environment
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14  # Change this to your desired Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Newman
+        run: npx newman run collection\moduit.json -e environment\environment.json -r htmlextra
