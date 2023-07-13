@@ -43,7 +43,7 @@
         "url": {
           "raw": "{{baseUrl}}/api/users?name=aldy&job=qa engineer",
           "host": ["{{baseUrl}}"],
-          "path": ["api", "users"],
+          "path": ["api", "users"], 
           "query": [
             {
               "key": "name",  
