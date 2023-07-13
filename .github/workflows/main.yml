@@ -23,6 +23,9 @@ jobs:
       - name: Run Newman
         run: npx newman run collection/moduit.json -e environment/environment.json --reporters htmlextra --reporter-htmlextra-export newman-report.html
 
+      - name: Create Reports Directory
+        run: mkdir -p $GITHUB_WORKSPACE/reports
+      
       - name: Move Newman Report
         run: mv newman-report.html $GITHUB_WORKSPACE/reports/newman-report.html
 
