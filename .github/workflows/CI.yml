@@ -1,0 +1,36 @@
+name: Run Newman
+on:
+    push:
+        branches:
+          - master 
+
+jobs:
+  API-with-Newman:
+    runs-on: ubuntu-latest
+    steps:
+     
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14  # Change this to your desired Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Newman
+        run: npx newman run collection/moduit.json -e environment/environment.json --reporters htmlextra --reporter-htmlextra-export newman-report.html
+
+      - name: Create Reports Directory
+        run: mkdir -p $GITHUB_WORKSPACE/reports
+      
+      - name: Move Newman Report
+        run: mv newman-report.html $GITHUB_WORKSPACE/reports/newman-report.html
+     
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+           name: my-artifact
+           path: ${{ github.workspace }}/reports/newman-report.html
