@@ -1,4 +1,4 @@
-name: Run Newman
+name: Run Newman CI
 on:
     push:
         branches:
@@ -15,7 +15,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16  # Change this to your desired Node.js version
+          node-version: 15  # Change this to your desired Node.js version
 
       - name: Install dependencies
         run: npm install
