@@ -1,5 +1,10 @@
 # Getting Started
 
+## Prerequisites
+
+Before you can run this project, you must have the following software installed on your computer:
+- nodeJS
+- Visual studio code
 
 ## Installation
 1. Clone this repository to your local machine using `git clone https://github.com/aldimanx/newman-API.git'
