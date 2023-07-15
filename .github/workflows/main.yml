@@ -41,9 +41,9 @@ jobs:
       
       - name: Move Newman Report
         run: mv newman-report.html $GITHUB_WORKSPACE/reports/newman-report.html
-
-      - name: Publish Newman Report
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+     
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
         with:
-          branch: gh-pages
-          folder: .
+           name: my-artifact
+           path: ${{ github.workspace }}/reports/newman-report.html
