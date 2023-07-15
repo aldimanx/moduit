@@ -23,5 +23,4 @@ report will be report/result.html
 ## how to run test via github actions and generate html report
 
 trigger manually or on every approved code changes.
-report will be in gh-actions branch
-reports/newman-report.html
+report will be in bottom of summary github actions item (artifact)
